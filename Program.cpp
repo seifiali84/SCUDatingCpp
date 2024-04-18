@@ -113,11 +113,51 @@ void PrintMainMenu()
          << "\n";
     cout << "3) Delete a Person"
          << "\n";
+    cout << "0) Exit"
+         << "\n";
+}
+
+// Load Main Menu :
+void LoadMainMenu()
+{
+    // Print Options :
+    PrintMainMenu();
+
+    // Get Option From User :
+    cout << "Please Enter Your Choice : ";
+    string UserOption;
+    getline(cin, UserOption);
+
+    if (UserOption == "1")
+    {
+        // Load Find a Person Page
+
+    }
+    else if (UserOption == "2")
+    {
+        // Load Add New Person Page
+
+    }
+    else if (UserOption == "3")
+    {
+        // Load Delete a Person Page
+
+    }
+    else if (UserOption == "0")
+    {
+        // Exit From The Program
+    }
+    else
+    {
+        // Invalid Choice!
+        cout << "Please Enter a Valid Choice!";
+    }
 }
 
 // Program Start :
 int main()
 {
-    PrintMainMenu();
+
+    LoadMainMenu();
     return 0;
 }
