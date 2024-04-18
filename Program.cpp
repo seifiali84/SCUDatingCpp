@@ -1,6 +1,8 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <cstdlib> // For system function
+
 
 using namespace std;
 
@@ -37,6 +39,17 @@ public:
  *      Peresentation        *
  *                           *
  *****************************/
+
+// A Function For Clear the Terminal in Windows or Another Operating Systems
+void clearScreen() {
+    #ifdef _WIN32
+        // For Windows
+        std::system("cls");
+    #else
+        // For Linux and macOS
+        std::system("clear");
+    #endif
+}
 
 // Program Start :
 int main()
