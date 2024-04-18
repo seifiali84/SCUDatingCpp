@@ -82,9 +82,19 @@ void PrintPageTitle(string Title)
         cout << ' ';
     }
     cout << Title;
-    for (int i = 0; i < 43 - (Title.size() / 2); i++)
+    if (Title.size() % 2 == 0)
     {
-        cout << ' ';
+        for (int i = 0; i < 44 - (Title.size() / 2); i++)
+        {
+            cout << ' ';
+        }
+    }
+    else
+    {
+        for (int i = 0; i < 43 - (Title.size() / 2); i++)
+        {
+            cout << ' ';
+        }
     }
     cout << "|"
          << "\n";
