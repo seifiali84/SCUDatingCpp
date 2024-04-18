@@ -82,7 +82,7 @@ void PrintPageTitle(string Title)
         cout << ' ';
     }
     cout << Title;
-    for (int i = 0; i < 44 - (Title.size() / 2); i++)
+    for (int i = 0; i < 43 - (Title.size() / 2); i++)
     {
         cout << ' ';
     }
@@ -92,10 +92,22 @@ void PrintPageTitle(string Title)
          << "\n";
 }
 
-// Program Start :
-int main()
+// Print Main Menu Options :
+void PrintMainMenu()
 {
     PrintMainHeader();
     PrintPageTitle("Main Menu");
+    cout << "1) Find a Person"
+         << "\n";
+    cout << "2) Add New Person"
+         << "\n";
+    cout << "3) Delete a Person"
+         << "\n";
+}
+
+// Program Start :
+int main()
+{
+    PrintMainMenu();
     return 0;
 }
