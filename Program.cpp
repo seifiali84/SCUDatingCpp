@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <fstream>
 #include <cstdlib> // For system function
 
 using namespace std;
@@ -14,6 +15,85 @@ using namespace std;
 void PrintMainHeader();
 void PrintPageTitle(string Title);
 
+// Working With Files
+
+// Write a new Line to data file
+void WriteLine(string line)
+{
+    ofstream file("data.txt", ios::app);
+    file << line << "\n";
+    file.close();
+}
+
+// Edit a line of data file
+void EditLine(int Line, string NewLine)
+{
+    ifstream inputFile("data.txt");
+    vector<string> lines;
+    string line;
+
+    while (getline(inputFile, line))
+    {
+        lines.push_back(line);
+    }
+    inputFile.close();
+
+    if (Line >= 1 && Line <= lines.size())
+    {
+        lines[Line - 1] = NewLine;
+
+        ofstream outputFile("data.txt");
+        if (outputFile.is_open())
+        {
+            for (const auto &l : lines)
+            {
+                outputFile << l << "\n";
+            }
+            outputFile.close();
+        }
+        else
+        {
+            cout << "Error opening file for writing." << endl;
+        }
+    }
+    else
+    {
+        cout << "Invalid line number." << endl;
+    }
+}
+
+// Read All data rows from data file
+vector<string> ReadAll()
+{
+    ifstream file("data.txt");
+    vector<string> allLines;
+
+    string line;
+    while (getline(file, line))
+    {
+        allLines.push_back(line);
+    }
+    file.close();
+}
+
+// Read a line of data file
+string ReadLine(int Line)
+{
+    ifstream file("data.txt");
+    string line;
+    for (int i = 1; i < Line; ++i)
+    {
+        if (!getline(file, line))
+        {
+            cout << "Line " << Line << " does not exist." << endl;
+            return "";
+        }
+        getline(file, line);
+        file.close();
+        return line;
+    }
+}
+
 /****************************
  *                           *
  *          Models           *
@@ -25,6 +105,7 @@ class Person
 public:
     // Attributes :
 
+    int Id;
     string Name;
     string Family;
     int Age;
@@ -117,7 +198,7 @@ public:
         cout << "Religion : " << Religion << "\n";
         cout << "Location : " << Location << "\n";
         cout << "Vehicle : " << Vehicle << "\n";
-        cout << "Money : " << Money << "\n"; 
+        cout << "Money : " << Money << "\n";
     }
 };
 
@@ -420,10 +501,9 @@ void LoadAddPersonPage()
     // Get Confirmation And Add New Person to data File:
     cout << "Press Enter To Confirm the Information";
     string UserInput;
-    getline(cin , UserInput);
+    getline(cin, UserInput);
 
     // Create The Person in Data File :
-    
 }
 
 // Print Main Menu Options :
