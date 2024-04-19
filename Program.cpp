@@ -94,6 +94,19 @@ string ReadLine(int Line)
     }
 }
 
+// Get Last Id + 1
+void GetNewId()
+{
+    ifstream file("LastId.txt");
+    string line;
+    getline(file , line);
+    file.close();
+
+    ofstream file2("LastId.txt");
+    file2 << stoi(line) + 1;
+    file2.close();
+}
+
 /****************************
  *                           *
  *          Models           *
