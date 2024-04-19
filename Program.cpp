@@ -99,7 +99,7 @@ string ReadLine(int Line)
 }
 
 // Get Last Id + 1
-void GetNewId()
+int GetNewId()
 {
     ifstream file("LastId.txt");
     string line;
@@ -107,8 +107,11 @@ void GetNewId()
     file.close();
 
     ofstream file2("LastId.txt");
-    file2 << stoi(line) + 1;
+    int id = stoi(line) + 1;
+    file2 << id;
     file2.close();
+
+    return id;
 }
 
 /****************************S
@@ -242,6 +245,9 @@ public:
     // Create Function :
     void Create()
     {
+        Id = GetNewId();
+
+        
     }
 };
 
