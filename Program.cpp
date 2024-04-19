@@ -76,7 +76,6 @@ void PrintMainHeader()
 // Print Filtered People
 void ShowFilterPeople(string Name, string Family, string Age, string Height, string Weight, string Gender, string EyeColor, string SkinColor, string Religion, string Location, string Vehicle, string Money)
 {
-    
 }
 
 // Print Title Of Page That Program on it
@@ -208,7 +207,7 @@ void LoadFindPersonPage()
     getline(cin, Weight);
 
     // Gender Filter
-    cout << "Enter Gender : (Enter 0 For Male and 1 for Female) : ";
+    cout << "Enter Gender (Enter 0 For Male and 1 for Female) : ";
     string Gender;
     getline(cin, Gender);
 
@@ -254,6 +253,76 @@ void LoadFindPersonPage()
     ShowFilterPeople(Name, Family, Age, Height, Weight, Gender, EyeColor, SkinColor, Religion, Location, Vehice, Money);
 }
 
+void LoadAddPersonPage()
+{
+    PrintMainHeader();
+    PrintPageTitle("Add New Person");
+
+    cout << "----- Enter New Person Inforation -----" << "\n";
+
+    // Get Name :
+    cout << "Enter Name : ";
+    string Name;
+    getline(cin, Name);
+
+    // Get Family
+    cout << "Enter Family : ";
+    string Family;
+    getline(cin, Family);
+
+    // Get Age
+    cout << "Enter Age : ";
+    string Age;
+    getline(cin, Age);
+
+    // Get Height
+    cout << "Enter Height : ";
+    string Height;
+    getline(cin, Height);
+
+    // Get Weitght
+    cout << "Enter Weight : ";
+    string Weight;
+    getline(cin, Weight);
+
+    // Get Gender
+    cout << "Enter Gender(Enter 0 For Male and 1 for Female) : ";
+    string Gender;
+    getline(cin, Gender);
+
+    // Get Eye Color
+    cout << "Enter Eye Color : ";
+    string EyeColor;
+    getline(cin, Gender);
+
+    // Get Skin Color
+    cout << "Enter Skin Color : ";
+    string SkinColor;
+    getline(cin, SkinColor);
+
+    // Get Religion
+    cout << "Enter Religion : ";
+    string Religion;
+    getline(cin, Religion);
+
+    // Get Location
+    cout << "Enter Location : ";
+    string Location;
+    getline(cin, Religion);
+
+    // Get Vehicle
+    cout << "Enter Vehicle : ";
+    string Vehice;
+    getline(cin, Vehice);
+
+    // Get Money
+    cout << "Enter Money : ";
+    string Money;
+    getline(cin, Money);
+
+    
+}
+
 // Print Main Menu Options :
 void PrintMainMenu()
 {
@@ -283,6 +352,7 @@ void LoadMainMenu()
     if (UserOption == "1")
     {
         // Load Find a Person Page
+        LoadFindPersonPage();
     }
     else if (UserOption == "2")
     {
