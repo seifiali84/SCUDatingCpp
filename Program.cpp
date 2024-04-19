@@ -15,7 +15,6 @@ using namespace std;
 void PrintMainHeader();
 void PrintPageTitle(string Title);
 
-
 /****************************
  *                           *
  *         Database          *
@@ -104,7 +103,7 @@ void GetNewId()
 {
     ifstream file("LastId.txt");
     string line;
-    getline(file , line);
+    getline(file, line);
     file.close();
 
     ofstream file2("LastId.txt");
@@ -112,7 +111,7 @@ void GetNewId()
     file2.close();
 }
 
-/****************************
+/****************************S
  *                           *
  *          Models           *
  *                           *
@@ -200,23 +199,49 @@ public:
         }
     }
 
+    // Show Person Infromation in Rows
     void ShowInformation()
     {
         PrintMainHeader();
         PrintPageTitle("Person Information");
 
-        cout << "Name : " << Name << "\n";
-        cout << "Family : " << Family << "\n";
-        cout << "Age : " << Age << "\n";
-        cout << "Height : " << Height << "\n";
-        cout << "Weight : " << Weight << "\n";
-        cout << "Gender : " << Gender << "\n";
-        cout << "Eye Color : " << EyeColor << "\n";
-        cout << "Skin Color : " << SkinColor << "\n";
-        cout << "Religion : " << Religion << "\n";
-        cout << "Location : " << Location << "\n";
-        cout << "Vehicle : " << Vehicle << "\n";
-        cout << "Money : " << Money << "\n";
+        if (Id != 0)
+            cout << "Id : " << Id << "\n";
+
+        if (Name != "")
+            cout << "Name : " << Name << "\n";
+
+        if (Family != "")
+            cout << "Family : " << Family << "\n";
+        if (Age != 0)
+            cout << "Age : " << Age << "\n";
+        if (Height != 0)
+            cout << "Height : " << Height << "\n";
+        if (Weight != 0)
+            cout << "Weight : " << Weight << "\n";
+        if (Gender != 0)
+            cout << "Gender : " << Gender << "\n";
+        if (EyeColor != "")
+            cout << "Eye Color : " << EyeColor << "\n";
+        if (SkinColor != "")
+            cout << "Skin Color : " << SkinColor << "\n";
+        if (Religion != "")
+            cout << "Religion : " << Religion << "\n";
+        if (Location != "")
+            cout << "Location : " << Location << "\n";
+        if (Vehicle != "")
+            cout << "Vehicle : " << Vehicle << "\n";
+        if (Money != 0)
+            cout << "Money : " << Money << "\n";
+    }
+
+    /********************/
+    //  Crud Functions  //
+    /********************/
+
+    // Create Function :
+    void Create()
+    {
     }
 };
 
