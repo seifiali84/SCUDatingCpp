@@ -15,11 +15,13 @@ class Person
 {
 public:
     // Attributes :
+
     string Name;
     string Family;
     int Age;
     int Height;
     float Weight;
+    // Female : 1 , Male : 0
     bool Gender;
     string EyeColor;
     string SkinColor;
@@ -29,6 +31,66 @@ public:
     double Money;
 
     // Methods :
+
+    // Constructor For Creating Object from User Inputs
+    Person(string name, string family, string age, string height, string weight, string gender, string eyeColor, string skinColor, string religion, string location, string vehicle, string money)
+    {
+        if (name != "")
+        {
+            Name = name;
+        }
+        if (family != "")
+        {
+            Family = family;
+        }
+        if (age != "")
+        {
+            Age = stoi(age);
+        }
+        if (height != "")
+        {
+            Height = stoi(height);
+        }
+        if (weight != "")
+        {
+            Weight = stof(weight);
+        }
+        if (gender != "")
+        {
+            if (gender == "1")
+            {
+                Gender = true;
+            }
+            else
+            {
+                Gender = false;
+            }
+        }
+        if (eyeColor != "")
+        {
+            EyeColor = eyeColor;
+        }
+        if (skinColor != "")
+        {
+            SkinColor = skinColor;
+        }
+        if (religion != "")
+        {
+            Religion = religion;
+        }
+        if (location != "")
+        {
+            Location = location;
+        }
+        if (vehicle != "")
+        {
+            Vehicle = vehicle;
+        }
+        if (money != "")
+        {
+            Money = stod(money);
+        }
+    }
 };
 
 /****************************
@@ -202,7 +264,7 @@ void LoadFindPersonPage()
     getline(cin, Height);
 
     // Weitght Filter
-    cout << "Enter Weight Range (Ex : 50,70) : ";
+    cout << "Enter Weight Range (Ex : 50.3,70.6) : ";
     string Weight;
     getline(cin, Weight);
 
@@ -258,7 +320,8 @@ void LoadAddPersonPage()
     PrintMainHeader();
     PrintPageTitle("Add New Person");
 
-    cout << "----- Enter New Person Inforation -----" << "\n";
+    cout << "----- Enter New Person Inforation -----"
+         << "\n";
 
     // Get Name :
     cout << "Enter Name : ";
@@ -320,7 +383,7 @@ void LoadAddPersonPage()
     string Money;
     getline(cin, Money);
 
-    
+    // Create Person Object :
 }
 
 // Print Main Menu Options :
