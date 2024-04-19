@@ -15,7 +15,12 @@ using namespace std;
 void PrintMainHeader();
 void PrintPageTitle(string Title);
 
-// Working With Files
+
+/****************************
+ *                           *
+ *         Database          *
+ *                           *
+ *****************************/
 
 // Write a new Line to data file
 void WriteLine(string line)
