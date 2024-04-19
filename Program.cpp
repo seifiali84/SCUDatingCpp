@@ -29,43 +29,6 @@ void WriteLine(string line)
     file.close();
 }
 
-// Edit a line of data file
-void EditLine(int Line, string NewLine)
-{
-    ifstream inputFile("data.txt");
-    vector<string> lines;
-    string line;
-
-    while (getline(inputFile, line))
-    {
-        lines.push_back(line);
-    }
-    inputFile.close();
-
-    if (Line >= 1 && Line <= lines.size())
-    {
-        lines[Line - 1] = NewLine;
-
-        ofstream outputFile("data.txt");
-        if (outputFile.is_open())
-        {
-            for (const auto &l : lines)
-            {
-                outputFile << l << "\n";
-            }
-            outputFile.close();
-        }
-        else
-        {
-            cout << "Error opening file for writing." << endl;
-        }
-    }
-    else
-    {
-        cout << "Invalid line number." << endl;
-    }
-}
-
 // Read All data rows from data file
 vector<string> ReadAll()
 {
@@ -78,24 +41,6 @@ vector<string> ReadAll()
         allLines.push_back(line);
     }
     file.close();
-}
-
-// Read a line of data file
-string ReadLine(int Line)
-{
-    ifstream file("data.txt");
-    string line;
-    for (int i = 1; i < Line; ++i)
-    {
-        if (!getline(file, line))
-        {
-            cout << "Line " << Line << " does not exist." << endl;
-            return "";
-        }
-        getline(file, line);
-        file.close();
-        return line;
-    }
 }
 
 // Get Last Id + 1
@@ -145,6 +90,7 @@ public:
     // Constructor For Creating Object from User Inputs
     Person(string name, string family, string age, string height, string weight, string gender, string eyeColor, string skinColor, string religion, string location, string vehicle, string money)
     {
+        Id = 0;
         if (name != "")
         {
             Name = name;
@@ -222,8 +168,7 @@ public:
             cout << "Height : " << Height << "\n";
         if (Weight != 0)
             cout << "Weight : " << Weight << "\n";
-        if (Gender != 0)
-            cout << "Gender : " << Gender << "\n";
+        cout << "Gender : " << Gender << "\n";
         if (EyeColor != "")
             cout << "Eye Color : " << EyeColor << "\n";
         if (SkinColor != "")
@@ -234,8 +179,7 @@ public:
             cout << "Location : " << Location << "\n";
         if (Vehicle != "")
             cout << "Vehicle : " << Vehicle << "\n";
-        if (Money != 0)
-            cout << "Money : " << Money << "\n";
+        cout << "Money : " << Money << "\n";
     }
 
     /********************/
@@ -248,11 +192,16 @@ public:
         // Get New Id for this Person
         Id = GetNewId();
 
-        // Create string CSV Data Line 
+        // Create string CSV Data Line
         string DataLine = to_string(Id) + ',' + Name + ',' + Family + ',' + to_string(Age) + ',' + to_string(Height) + ',' + to_string(Weight) + ',' + to_string(Gender) + ',' + EyeColor + ',' + SkinColor + ',' + Religion + ',' + Location + ',' + Vehicle + ',' + to_string(Money);
-        
+
         // Write Data Line to Data File
         WriteLine(DataLine);
+    }
+
+    // Read All Function
+    vector<string> Read()
+    {
     }
 };
 
@@ -553,11 +502,14 @@ void LoadAddPersonPage()
     P.ShowInformation();
 
     // Get Confirmation And Add New Person to data File:
-    cout << "Press Enter To Confirm the Information";
+    cout << "Press Enter To Confirm the Information ...";
     string UserInput;
     getline(cin, UserInput);
 
     // Create The Person in Data File :
+    P.Create();
+    cout << "Person Added Successfully. Press Enter and return to Main Menu ...";
+    getline(cin, UserInput);
 }
 
 // Print Main Menu Options :
@@ -592,6 +544,7 @@ void LoadMainMenu()
     else if (UserOption == "2")
     {
         // Load Add New Person Page
+        LoadAddPersonPage();
     }
     else if (UserOption == "0")
     {
