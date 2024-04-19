@@ -7,6 +7,15 @@ using namespace std;
 
 /****************************
  *                           *
+ *       Declarations        *
+ *                           *
+ *****************************/
+
+void PrintMainHeader();
+void PrintPageTitle(string Title);
+
+/****************************
+ *                           *
  *          Models           *
  *                           *
  *****************************/
@@ -90,6 +99,25 @@ public:
         {
             Money = stod(money);
         }
+    }
+
+    void ShowInformation()
+    {
+        PrintMainHeader();
+        PrintPageTitle("Person Information");
+
+        cout << "Name : " << Name << "\n";
+        cout << "Family : " << Family << "\n";
+        cout << "Age : " << Age << "\n";
+        cout << "Height : " << Height << "\n";
+        cout << "Weight : " << Weight << "\n";
+        cout << "Gender : " << Gender << "\n";
+        cout << "Eye Color : " << EyeColor << "\n";
+        cout << "Skin Color : " << SkinColor << "\n";
+        cout << "Religion : " << Religion << "\n";
+        cout << "Location : " << Location << "\n";
+        cout << "Vehicle : " << Vehicle << "\n";
+        cout << "Money : " << Money << "\n"; 
     }
 };
 
@@ -384,6 +412,18 @@ void LoadAddPersonPage()
     getline(cin, Money);
 
     // Create Person Object :
+    Person P(Name, Family, Age, Height, Weight, Gender, EyeColor, SkinColor, Religion, Location, Vehice, Money);
+
+    // Show Person Information to Confirm :
+    P.ShowInformation();
+
+    // Get Confirmation And Add New Person to data File:
+    cout << "Press Enter To Confirm the Information";
+    string UserInput;
+    getline(cin , UserInput);
+
+    // Create The Person in Data File :
+    
 }
 
 // Print Main Menu Options :
