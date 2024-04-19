@@ -6,7 +6,7 @@
 
 using namespace std;
 
-/****************************
+/*****************************
  *                           *
  *       Declarations        *
  *                           *
@@ -15,7 +15,7 @@ using namespace std;
 void PrintMainHeader();
 void PrintPageTitle(string Title);
 
-/****************************
+/*****************************
  *                           *
  *         Database          *
  *                           *
@@ -114,7 +114,7 @@ int GetNewId()
     return id;
 }
 
-/****************************S
+/*****************************
  *                           *
  *          Models           *
  *                           *
@@ -245,13 +245,18 @@ public:
     // Create Function :
     void Create()
     {
+        // Get New Id for this Person
         Id = GetNewId();
 
+        // Create string CSV Data Line 
+        string DataLine = to_string(Id) + ',' + Name + ',' + Family + ',' + to_string(Age) + ',' + to_string(Height) + ',' + to_string(Weight) + ',' + to_string(Gender) + ',' + EyeColor + ',' + SkinColor + ',' + Religion + ',' + Location + ',' + Vehicle + ',' + to_string(Money);
         
+        // Write Data Line to Data File
+        WriteLine(DataLine);
     }
 };
 
-/****************************
+/*****************************
  *                           *
  *      Peresentation        *
  *                           *
