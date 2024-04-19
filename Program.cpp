@@ -99,7 +99,72 @@ void PrintPageTitle(string Title)
     cout << "|"
          << "\n";
     cout << "|----------------------------------------------------------------------------------------|"
-         << "\n";
+         << "\n\n";
+}
+
+void PrintFilters(string Name, string Family, string Age, string Height, string Weight, string Gender, string EyeColor, string SkinColor, string Religion, string Location, string Vehicle, string Money)
+{
+    PrintMainHeader();
+    PrintPageTitle("Your Filters");
+
+    if (Name != "")
+    {
+        cout << "Name Filter : " << Name << "\n";
+    }
+    if (Family != "")
+    {
+        cout << "Family Filter : " << Family << "\n";
+    }
+    if (Age != "")
+    {
+        cout << "Age Filter : " << Age << "\n";
+    }
+    if (Height != "")
+    {
+        cout << "Height Filter : " << Height << "\n";
+    }
+    if (Weight != "")
+    {
+        cout << "Weight Filter : " << Weight << "\n";
+    }
+    if (Gender != "")
+    {
+        cout << "Gender Filter : ";
+        if (Gender == "1")
+        {
+            cout << "Female"
+                 << "\n";
+        }
+        else
+        {
+            cout << "Male"
+                 << "\n";
+        }
+    }
+    if (EyeColor != "")
+    {
+        cout << "Eye Color Filter : " << EyeColor << "\n";
+    }
+    if (SkinColor != "")
+    {
+        cout << "Skin Color Filter : " << SkinColor << "\n";
+    }
+    if (Religion != "")
+    {
+        cout << "Religion Filter : " << Religion << "\n";
+    }
+    if (Location != "")
+    {
+        cout << "Location Filter : " << Location << "\n";
+    }
+    if (Vehicle != "")
+    {
+        cout << "Vehicle Filter : " << Vehicle << "\n";
+    }
+    if (Money != "")
+    {
+        cout << "Money Filter : " << Money << "\n";
+    }
 }
 
 // Load Find a Person Page
@@ -109,7 +174,7 @@ void LoadFindPersonPage()
     PrintPageTitle("Find a Person");
     cout << "----- Set Your Filters to Find Best Person -----"
          << "\n";
-    
+
     // Name Filter
     cout << "Enter Name : ";
     string Name;
@@ -163,14 +228,12 @@ void LoadFindPersonPage()
     // Vehicle Filter
     cout << "Enter Vehicle : ";
     string Vehice;
-    getline(cin , Vehice);
+    getline(cin, Vehice);
 
     // Money Filter
     cout << "Enter Money Range (Ex : 100000,1000000): ";
     string Money;
-    getline(cin , Money);
-
-
+    getline(cin, Money);
 }
 
 // Print Main Menu Options :
