@@ -73,6 +73,12 @@ void PrintMainHeader()
          << "\n";
 }
 
+// Print Filtered People
+void ShowFilterPeople(string Name, string Family, string Age, string Height, string Weight, string Gender, string EyeColor, string SkinColor, string Religion, string Location, string Vehicle, string Money)
+{
+    
+}
+
 // Print Title Of Page That Program on it
 void PrintPageTitle(string Title)
 {
@@ -102,6 +108,7 @@ void PrintPageTitle(string Title)
          << "\n\n";
 }
 
+// Print User Filters in Rows
 void PrintFilters(string Name, string Family, string Age, string Height, string Weight, string Gender, string EyeColor, string SkinColor, string Religion, string Location, string Vehicle, string Money)
 {
     PrintMainHeader();
@@ -234,6 +241,17 @@ void LoadFindPersonPage()
     cout << "Enter Money Range (Ex : 100000,1000000): ";
     string Money;
     getline(cin, Money);
+
+    // Show Filters :
+    PrintFilters(Name, Family, Age, Height, Weight, Gender, EyeColor, SkinColor, Religion, Location, Vehice, Money);
+
+    // Enter to Continue
+    cout << "Press Enter to See Result"
+         << "\n";
+    string UserInput;
+    getline(cin, UserInput);
+
+    ShowFilterPeople(Name, Family, Age, Height, Weight, Gender, EyeColor, SkinColor, Religion, Location, Vehice, Money);
 }
 
 // Print Main Menu Options :
