@@ -435,8 +435,6 @@ void PrintMainMenu()
          << "\n";
     cout << "2) Add New Person"
          << "\n";
-    cout << "3) Delete a Person"
-         << "\n";
     cout << "0) Exit"
          << "\n";
 }
@@ -460,10 +458,6 @@ void LoadMainMenu()
     else if (UserOption == "2")
     {
         // Load Add New Person Page
-    }
-    else if (UserOption == "3")
-    {
-        // Load Delete a Person Page
     }
     else if (UserOption == "0")
     {
