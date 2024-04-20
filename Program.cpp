@@ -281,47 +281,47 @@ public:
             // Filter Family
             if (family != "" && P.Family != family)
                 continue;
-        
+
             // Filter Age
-            if(P.Age > MaxAge || P.Age < MinAge)
+            if (P.Age > MaxAge || P.Age < MinAge)
                 continue;
-            
+
             // Filter Height
-            if(P.Height > MaxHeight || P.Height < MinHeight)
+            if (P.Height > MaxHeight || P.Height < MinHeight)
                 continue;
-        
+
             // Filter Weight
-            if(P.Weight > MaxWeight || P.Weight < MinWeight)
+            if (P.Weight > MaxWeight || P.Weight < MinWeight)
                 continue;
 
             // Filter Gender
-            if(P.Gender != gender)
+            if (P.Gender != gender)
                 continue;
 
             // Filter Eye Color
-            if(eyeColor != "" && P.EyeColor != eyeColor)
+            if (eyeColor != "" && P.EyeColor != eyeColor)
                 continue;
 
             // Filter Skin Color
-            if(skinColor != "" && P.SkinColor != skinColor)
+            if (skinColor != "" && P.SkinColor != skinColor)
                 continue;
-            
+
             // Filter Religion
-            if(religion != "" && P.Religion != religion)
+            if (religion != "" && P.Religion != religion)
                 continue;
-            
+
             // Filter Location
-            if(location != "" && P.Location != location)
+            if (location != "" && P.Location != location)
                 continue;
 
             // Filter Vehicle
-            if(vehicle != "" && P.Vehicle != vehicle)
+            if (vehicle != "" && P.Vehicle != vehicle)
                 continue;
-            
+
             // Filter Money
-            if(P.Money > MaxMoney || P.Money < MinMoney)
+            if (P.Money > MaxMoney || P.Money < MinMoney)
                 continue;
-            
+
             FilteredPeople.push_back(P);
         }
 
@@ -371,9 +371,51 @@ void PrintMainHeader()
          << "\n";
 }
 
+void SplitInt(string data, int &a, int &b)
+{
+    if (data != "")
+    {
+        string TempData = "";
+        for (char c : data)
+        {
+            if (c != ',')
+            {
+                TempData += c;
+            }
+            else
+            {
+                a = stoi(TempData);
+                TempData = "";
+            }
+        }
+        b = stoi(TempData);
+    }
+    else
+    {
+        a = 0;
+        b = 0;
+    }
+}
+
 // Print Filtered People
 void ShowFilterPeople(string Name, string Family, string Age, string Height, string Weight, string Gender, string EyeColor, string SkinColor, string Religion, string Location, string Vehicle, string Money)
 {
+    // Split Min Age and Max Age
+    int MinAge;
+    int MaxAge;
+    SplitInt(Age , MinAge , MaxAge);
+
+    // Split Min and Max Height
+    int MinHeight;
+    int MaxHeight;
+    SplitInt(Age , MinHeight , MaxHeight);
+
+    // Split Min And Max Weight
+    float MinWeight;
+    float MaxWeight;
+    
+
+    Person::Filter(Name, Family, MinAge, MaxAge)
 }
 
 // Print Title Of Page That Program on it
