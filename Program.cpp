@@ -371,6 +371,7 @@ void PrintMainHeader()
          << "\n";
 }
 
+// Split Two Int by ','
 void SplitInt(string data, int &a, int &b)
 {
     if (data != "")
@@ -397,25 +398,56 @@ void SplitInt(string data, int &a, int &b)
     }
 }
 
+// Split Two Float by ','
+void SplitFloat(string data, float &a, float &b)
+{
+    if (data != "")
+    {
+        string TempData = "";
+        for (char c : data)
+        {
+            if (c != ',')
+            {
+                TempData += c;
+            }
+            else
+            {
+                a = stof(TempData);
+                TempData = "";
+            }
+        }
+        b = stof(TempData);
+    }
+    else
+    {
+        a = 0;
+        b = 0;
+    }
+}
+
 // Print Filtered People
 void ShowFilterPeople(string Name, string Family, string Age, string Height, string Weight, string Gender, string EyeColor, string SkinColor, string Religion, string Location, string Vehicle, string Money)
 {
     // Split Min Age and Max Age
     int MinAge;
     int MaxAge;
-    SplitInt(Age , MinAge , MaxAge);
+    SplitInt(Age, MinAge, MaxAge);
 
     // Split Min and Max Height
     int MinHeight;
     int MaxHeight;
-    SplitInt(Age , MinHeight , MaxHeight);
+    SplitInt(Age, MinHeight, MaxHeight);
 
     // Split Min And Max Weight
     float MinWeight;
     float MaxWeight;
-    
+    SplitFloat(Weight , MinWeight , MaxWeight);
 
-    Person::Filter(Name, Family, MinAge, MaxAge)
+    // Split Min And Max Money
+    double MinMoney;
+    double MaxMoney;
+
+    Person::Filter(Name, Family, MinAge, MaxAge , MinHeight , MaxHeight , MinWeight , MaxWeight , (Gender == "1") , EyeColor , SkinColor , Religion , Location , Vehicle , )
 }
 
 // Print Title Of Page That Program on it
