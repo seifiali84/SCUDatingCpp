@@ -425,6 +425,33 @@ void SplitFloat(string data, float &a, float &b)
     }
 }
 
+// Split Two Double By ','
+void SplitDouble(string data, double &a, double &b)
+{
+    if (data != "")
+    {
+        string TempData = "";
+        for (char c : data)
+        {
+            if (c != ',')
+            {
+                TempData += c;
+            }
+            else
+            {
+                a = stod(TempData);
+                TempData = "";
+            }
+        }
+        b = stod(TempData);
+    }
+    else
+    {
+        a = 0;
+        b = 0;
+    }
+}
+
 // Print Filtered People
 void ShowFilterPeople(string Name, string Family, string Age, string Height, string Weight, string Gender, string EyeColor, string SkinColor, string Religion, string Location, string Vehicle, string Money)
 {
@@ -441,13 +468,13 @@ void ShowFilterPeople(string Name, string Family, string Age, string Height, str
     // Split Min And Max Weight
     float MinWeight;
     float MaxWeight;
-    SplitFloat(Weight , MinWeight , MaxWeight);
+    SplitFloat(Weight, MinWeight, MaxWeight);
 
     // Split Min And Max Money
     double MinMoney;
     double MaxMoney;
 
-    Person::Filter(Name, Family, MinAge, MaxAge , MinHeight , MaxHeight , MinWeight , MaxWeight , (Gender == "1") , EyeColor , SkinColor , Religion , Location , Vehicle , )
+    Person::Filter(Name, Family, MinAge, MaxAge, MinHeight, MaxHeight, MinWeight, MaxWeight, (Gender == "1"), EyeColor, SkinColor, Religion, Location, Vehicle, )
 }
 
 // Print Title Of Page That Program on it
