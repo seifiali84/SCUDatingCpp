@@ -184,6 +184,19 @@ public:
         cout << "Money : " << Money << "\n";
     }
 
+    // Print People
+    void PrintPeople(vector<Person> People)
+    {
+        // Print Headers
+        cout << "Name,Family,Age,Height,Weight,Gender,Eye Color,Skin Color,Religion,Location,Vehicle,Money"
+             << "\n";
+
+        for (Person P : People)
+        {
+            cout << P.Name << ',' << P.Family << ',' << P.Age << ',' << P.Height << ',' << P.Weight << ',' << P.Gender << ',' << P.EyeColor << ',' << P.SkinColor << ',' << P.Religion << ',' << P.Location << ',' << P.Vehicle << ',' << P.Money << '\n';
+        }
+    }
+
     /********************/
     //  Crud Functions  //
     /********************/
@@ -473,8 +486,9 @@ void ShowFilterPeople(string Name, string Family, string Age, string Height, str
     // Split Min And Max Money
     double MinMoney;
     double MaxMoney;
+    SplitDouble(Money, MinMoney, MaxMoney);
 
-    Person::Filter(Name, Family, MinAge, MaxAge, MinHeight, MaxHeight, MinWeight, MaxWeight, (Gender == "1"), EyeColor, SkinColor, Religion, Location, Vehicle, )
+    Person::Filter(Name, Family, MinAge, MaxAge, MinHeight, MaxHeight, MinWeight, MaxWeight, (Gender == "1"), EyeColor, SkinColor, Religion, Location, Vehicle, MinMoney, MaxMoney);
 }
 
 // Print Title Of Page That Program on it
