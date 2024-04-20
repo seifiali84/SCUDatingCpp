@@ -252,8 +252,13 @@ public:
 
         for (string line : data)
         {
+            People.push_back(Parse(line));
         }
+
+        return People;
     }
+
+    
 };
 
 /*****************************
