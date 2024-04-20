@@ -291,97 +291,51 @@ public:
         {
             // Filter Name
             if (name != "" && P.Name != name)
-            {
-                cout << "Name Is Not Match"
-                     << "\n";
                 continue;
-            }
+
             // Filter Family
             if (family != "" && P.Family != family)
-            {
-                cout << "Family Is Not Match"
-                     << "\n";
                 continue;
-            }
+                
             // Filter Age
             if ((P.Age > MaxAge || P.Age < MinAge) && (MinAge != 0 && MaxAge != 0))
-            {
-                cout << "Age is Not Match"
-                     << "\n";
                 continue;
-            }
 
             // Filter Height
             if ((P.Height > MaxHeight || P.Height < MinHeight) && (MinHeight != 0 && MaxHeight != 0))
-            {
-                cout << "Age is Not Match"
-                     << "\n";
                 continue;
-            }
 
             // Filter Weight
             if ((P.Weight > MaxWeight || P.Weight < MinWeight) && (MinWeight != 0 && MaxWeight != 0))
-            {
-                cout << "Age is Not Match"
-                     << "\n";
                 continue;
-            }
 
             // Filter Gender
             if (P.Gender != gender)
-            {
-                cout << "Age is Not Match"
-                     << "\n";
                 continue;
-            }
 
             // Filter Eye Color
             if (eyeColor != "" && P.EyeColor != eyeColor)
-            {
-                cout << "Age is Not Match"
-                     << "\n";
                 continue;
-            }
 
             // Filter Skin Color
             if (skinColor != "" && P.SkinColor != skinColor)
-            {
-                cout << "Age is Not Match"
-                     << "\n";
                 continue;
-            }
 
             // Filter Religion
             if (religion != "" && P.Religion != religion)
-            {
-                cout << "Age is Not Match"
-                     << "\n";
                 continue;
-            }
 
             // Filter Location
             if (location != "" && P.Location != location)
-            {
-                cout << "Age is Not Match"
-                     << "\n";
                 continue;
-            }
 
             // Filter Vehicle
             if (vehicle != "" && P.Vehicle != vehicle)
-            {
-                cout << "Age is Not Match"
-                     << "\n";
                 continue;
-            }
 
             // Filter Money
             if ((P.Money > MaxMoney || P.Money < MinMoney) && (MinMoney != 0 && MaxMoney != 0))
-            {
-                cout << "Age is Not Match"
-                     << "\n";
                 continue;
-            }
 
             FilteredPeople.push_back(P);
         }
