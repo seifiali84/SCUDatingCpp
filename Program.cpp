@@ -88,6 +88,10 @@ public:
     // Methods :
 
     // Constructor For Creating Object from User Inputs
+    Person()
+    {
+        Id = 0;
+    }
     Person(string name, string family, string age, string height, string weight, string gender, string eyeColor, string skinColor, string religion, string location, string vehicle, string money)
     {
         Id = 0;
@@ -156,10 +160,8 @@ public:
 
         if (Id != 0)
             cout << "Id : " << Id << "\n";
-
         if (Name != "")
             cout << "Name : " << Name << "\n";
-
         if (Family != "")
             cout << "Family : " << Family << "\n";
         if (Age != 0)
@@ -198,10 +200,59 @@ public:
         // Write Data Line to Data File
         WriteLine(DataLine);
     }
-
-    // Read All Function
-    vector<string> Read()
+    static Person Parse(string line)
     {
+        // Convert Data Line to Person Object
+        Person P;
+        string TempData = "";
+        int index = 0;
+        for (char c : line)
+        {
+            if (c != ',')
+            {
+                TempData += c;
+            }
+            else
+            {
+                if (index == 0)
+                    P.Id = stoi(TempData);
+                else if (index == 1)
+                    P.Name = TempData;
+                else if (index == 2)
+                    P.Family = TempData;
+                else if (index == 3)
+                    P.Age = stoi(TempData);
+                else if (index == 4)
+                    P.Height = stoi(TempData);
+                else if (index == 5)
+                    P.Weight = stof(TempData);
+                else if (index == 6)
+                    P.Gender = 1 ? (TempData == "1") : 0;
+                else if (index == 7)
+                    P.EyeColor = TempData;
+                else if (index == 8)
+                    P.SkinColor = TempData;
+                else if (index == 9)
+                    P.Religion = TempData;
+                else if (index == 10)
+                    P.Location = TempData;
+                else if (index == 11)
+                    P.Vehicle = TempData;
+            }
+        }
+        P.Money = stod(TempData);
+
+        return P;
+    }
+    // Read All Function
+    static vector<Person> Read()
+    {
+        vector<string> data = ReadAll();
+        vector<Person> People;
+
+        for (string line : data)
+        {
+        }
     }
 };
 
@@ -307,19 +358,16 @@ void PrintFilters(string Name, string Family, string Age, string Height, string 
     {
         cout << "Weight Filter : " << Weight << "\n";
     }
-    if (Gender != "")
+    cout << "Gender Filter : ";
+    if (Gender == "1")
     {
-        cout << "Gender Filter : ";
-        if (Gender == "1")
-        {
-            cout << "Female"
-                 << "\n";
-        }
-        else
-        {
-            cout << "Male"
-                 << "\n";
-        }
+        cout << "Female"
+             << "\n";
+    }
+    else
+    {
+        cout << "Male"
+             << "\n";
     }
     if (EyeColor != "")
     {
@@ -419,12 +467,15 @@ void LoadFindPersonPage()
     PrintFilters(Name, Family, Age, Height, Weight, Gender, EyeColor, SkinColor, Religion, Location, Vehice, Money);
 
     // Enter to Continue
-    cout << "Press Enter to See Result"
+    cout << "Press Enter to See Result ..."
          << "\n";
     string UserInput;
     getline(cin, UserInput);
 
+    // Show Filters and Enter to Confirm
     ShowFilterPeople(Name, Family, Age, Height, Weight, Gender, EyeColor, SkinColor, Religion, Location, Vehice, Money);
+    cout << "Press Enter to Confirm Fiters ...";
+    getline(cin, UserInput);
 }
 
 void LoadAddPersonPage()
