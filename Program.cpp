@@ -185,7 +185,7 @@ public:
     }
 
     // Print People
-    void PrintPeople(vector<Person> People)
+    static void PrintPeople(vector<Person> People)
     {
         // Print Headers
         cout << "Name,Family,Age,Height,Weight,Gender,Eye Color,Skin Color,Religion,Location,Vehicle,Money"
@@ -488,7 +488,8 @@ void ShowFilterPeople(string Name, string Family, string Age, string Height, str
     double MaxMoney;
     SplitDouble(Money, MinMoney, MaxMoney);
 
-    Person::Filter(Name, Family, MinAge, MaxAge, MinHeight, MaxHeight, MinWeight, MaxWeight, (Gender == "1"), EyeColor, SkinColor, Religion, Location, Vehicle, MinMoney, MaxMoney);
+    vector<Person> People = Person::Filter(Name, Family, MinAge, MaxAge, MinHeight, MaxHeight, MinWeight, MaxWeight, (Gender == "1"), EyeColor, SkinColor, Religion, Location, Vehicle, MinMoney, MaxMoney);
+    Person::PrintPeople(People);
 }
 
 // Print Title Of Page That Program on it
