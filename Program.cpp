@@ -41,6 +41,8 @@ vector<string> ReadAll()
         allLines.push_back(line);
     }
     file.close();
+
+    return allLines;
 }
 
 // Get Last Id + 1
@@ -209,7 +211,7 @@ public:
 
         // Create string CSV Data Line
         string DataLine = to_string(Id) + ',' + Name + ',' + Family + ',' + to_string(Age) + ',' + to_string(Height) + ',' + to_string(Weight) + ',' + to_string(Gender) + ',' + EyeColor + ',' + SkinColor + ',' + Religion + ',' + Location + ',' + Vehicle + ',' + to_string(Money);
-
+        
         // Write Data Line to Data File
         WriteLine(DataLine);
     }
@@ -351,13 +353,8 @@ public:
 // A Function For Clear the Terminal in Windows or Another Operating Systems
 void clearScreen()
 {
-#ifdef _WIN32
-    // For Windows
-    std::system("cls");
-#else
     // For Linux and macOS
     std::system("clear");
-#endif
 }
 
 // a Function for Printing Header of Program
@@ -365,23 +362,23 @@ void PrintMainHeader()
 {
     clearScreen();
     cout << "|----------------------------------------------------------------------------------------|"
-         << "\n";
+         << endl;
     cout << "|  ____      ____    _   _       ____       _       _____               _   _     ____   |"
-         << "\n";
+         << endl;
     cout << "| / __\"| uU /\"___|U |\"|u| |     |  _\"\\  U  /\"\\  u  |_ \" _|     ___     | \\ |\"| U /\"___| u|"
-         << "\n";
+         << endl;
     cout << "|<\\___ \\/ \\| | u   \\| |\\| |    /| | | |  \\/ _ \\/     | |      |_\"_|   <|  \\| |>\\| |  _ / |"
-         << "\n";
+         << endl;
     cout << "| u___) |  | |/__   | |_| |    U| |_| |\\ / ___ \\    /| |\\      | |    U| |\\  |u | |_| |  |"
-         << "\n";
+         << endl;
     cout << "| |____/>>  \\____| <<\\___/      |____/ u/_/   \\_\\  u |_|U    U/| |\\u   |_| \\_|   \\____|  |"
-         << "\n";
+         << endl;
     cout << "|  )(  (__)_// \\\\ (__) )(        |||_    \\\\    >>  _// \\\\_.-,_|___|_,-.||   \\\\,-._)(|_   |"
-         << "\n";
+         << endl;
     cout << "| (__)    (__)(__)    (__)      (__)_)  (__)  (__)(__) (__)\\_)-' '-(_/ (_\")  (_/(__)__)  |"
-         << "\n";
+         << endl;
     cout << "|----------------------------------------------------------------------------------------|"
-         << "\n";
+         << endl;
 }
 
 // Split Two Int by ','
@@ -488,6 +485,7 @@ void ShowFilterPeople(string Name, string Family, string Age, string Height, str
     double MaxMoney;
     SplitDouble(Money, MinMoney, MaxMoney);
 
+    // Filter and Show People
     vector<Person> People = Person::Filter(Name, Family, MinAge, MaxAge, MinHeight, MaxHeight, MinWeight, MaxWeight, (Gender == "1"), EyeColor, SkinColor, Religion, Location, Vehicle, MinMoney, MaxMoney);
     Person::PrintPeople(People);
 }
@@ -667,6 +665,7 @@ void LoadFindPersonPage()
     getline(cin, UserInput);
 }
 
+// Load Add New Person Page
 void LoadAddPersonPage()
 {
     PrintMainHeader();
@@ -708,7 +707,7 @@ void LoadAddPersonPage()
     // Get Eye Color
     cout << "Enter Eye Color : ";
     string EyeColor;
-    getline(cin, Gender);
+    getline(cin, EyeColor);
 
     // Get Skin Color
     cout << "Enter Skin Color : ";
@@ -723,7 +722,7 @@ void LoadAddPersonPage()
     // Get Location
     cout << "Enter Location : ";
     string Location;
-    getline(cin, Religion);
+    getline(cin, Location);
 
     // Get Vehicle
     cout << "Enter Vehicle : ";
