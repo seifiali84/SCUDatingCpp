@@ -200,9 +200,11 @@ public:
         // Write Data Line to Data File
         WriteLine(DataLine);
     }
+
+    // Convert Data Line to Person Object
     static Person Parse(string line)
     {
-        // Convert Data Line to Person Object
+
         Person P;
         string TempData = "";
         int index = 0;
@@ -214,6 +216,7 @@ public:
             }
             else
             {
+                // Fill Person by Splited Information
                 if (index == 0)
                     P.Id = stoi(TempData);
                 else if (index == 1)
@@ -238,12 +241,17 @@ public:
                     P.Location = TempData;
                 else if (index == 11)
                     P.Vehicle = TempData;
+
+                // add to index and reset TempData
+                index++;
+                TempData = "";
             }
         }
         P.Money = stod(TempData);
 
         return P;
     }
+
     // Read All Function
     static vector<Person> Read()
     {
@@ -258,7 +266,67 @@ public:
         return People;
     }
 
-    
+    // Filter All People
+    static vector<Person> Filter(string name, string family, int MinAge, int MaxAge, int MinHeight, int MaxHeight, float MinWeight, float MaxWeight, bool gender, string eyeColor, string skinColor, string religion, string location, string vehicle, double MinMoney, double MaxMoney)
+    {
+        vector<Person> People = Read();
+        vector<Person> FilteredPeople;
+
+        for (Person P : People)
+        {
+            // Filter Name
+            if (name != "" && P.Name != name)
+                continue;
+
+            // Filter Family
+            if (family != "" && P.Family != family)
+                continue;
+        
+            // Filter Age
+            if(P.Age > MaxAge || P.Age < MinAge)
+                continue;
+            
+            // Filter Height
+            if(P.Height > MaxHeight || P.Height < MinHeight)
+                continue;
+        
+            // Filter Weight
+            if(P.Weight > MaxWeight || P.Weight < MinWeight)
+                continue;
+
+            // Filter Gender
+            if(P.Gender != gender)
+                continue;
+
+            // Filter Eye Color
+            if(eyeColor != "" && P.EyeColor != eyeColor)
+                continue;
+
+            // Filter Skin Color
+            if(skinColor != "" && P.SkinColor != skinColor)
+                continue;
+            
+            // Filter Religion
+            if(religion != "" && P.Religion != religion)
+                continue;
+            
+            // Filter Location
+            if(location != "" && P.Location != location)
+                continue;
+
+            // Filter Vehicle
+            if(vehicle != "" && P.Vehicle != vehicle)
+                continue;
+            
+            // Filter Money
+            if(P.Money > MaxMoney || P.Money < MinMoney)
+                continue;
+            
+            FilteredPeople.push_back(P);
+        }
+
+        return FilteredPeople;
+    }
 };
 
 /*****************************
