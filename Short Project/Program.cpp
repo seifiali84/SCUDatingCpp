@@ -131,8 +131,67 @@ int main()
     cout << "Enter Your Filters"
          << "\n";
 
+        // Name Filter
     cout << "Enter Name : ";
     string Name;
+    getline(cin, Name);
+
+    // Family Filter
+    cout << "Enter Family : ";
+    string Family;
+    getline(cin, Family);
+
+    // Age Filter
+    cout << "Enter Age Range (Ex : 18,22) : ";
+    string Age;
+    getline(cin, Age);
+
+    // Height Filter
+    cout << "Enter Height Range (Ex : 150,200) : ";
+    string Height;
+    getline(cin, Height);
+
+    // Weitght Filter
+    cout << "Enter Weight Range (Ex : 50.3,70.6) : ";
+    string Weight;
+    getline(cin, Weight);
+
+    // Gender Filter
+    cout << "Enter Gender (Enter 0 For Male and 1 for Female) : ";
+    string Gender;
+    getline(cin, Gender);
+
+    // Eye Color Filter
+    cout << "Enter Eye Color : ";
+    string EyeColor;
+    getline(cin, Gender);
+
+    // Skin Color Filter
+    cout << "Enter Skin Color : ";
+    string SkinColor;
+    getline(cin, SkinColor);
+
+    // Religion Filter
+    cout << "Enter Religion : ";
+    string Religion;
+    getline(cin, Religion);
+
+    // Location Filter
+    cout << "Enter Location : ";
+    string Location;
+    getline(cin, Religion);
+
+    // Vehicle Filter
+    cout << "Enter Vehicle : ";
+    string Vehice;
+    getline(cin, Vehice);
+
+    // Money Filter
+    cout << "Enter Money Range (Ex : 100000,1000000): ";
+    string Money;
+    getline(cin, Money);
+
+    
 
     return 0;
 }
