@@ -93,6 +93,36 @@ public:
     }
 };
 
+// Print Filtered People
+void ShowFilterPeople(string Name, string Family, string Age, string Height, string Weight, string Gender, string EyeColor, string SkinColor, string Religion, string Location, string Vehicle, string Money)
+{
+    // Split Min Age and Max Age
+    int MinAge;
+    int MaxAge;
+    SplitInt(Age, MinAge, MaxAge);
+    cout << "Min Age : " << MinAge << "\n";
+    cout << "Max Age : " << MaxAge << "\n";
+
+    // Split Min and Max Height
+    int MinHeight;
+    int MaxHeight;
+    SplitInt(Age, MinHeight, MaxHeight);
+
+    // Split Min And Max Weight
+    float MinWeight;
+    float MaxWeight;
+    SplitFloat(Weight, MinWeight, MaxWeight);
+
+    // Split Min And Max Money
+    double MinMoney;
+    double MaxMoney;
+    SplitDouble(Money, MinMoney, MaxMoney);
+
+    // Filter and Show People
+    vector<Person> People = Person::Filter(Name, Family, MinAge, MaxAge, MinHeight, MaxHeight, MinWeight, MaxWeight, (Gender == "1"), EyeColor, SkinColor, Religion, Location, Vehicle, MinMoney, MaxMoney);
+    Person::PrintPeople(People);
+}
+
 int main()
 {
     Person p1;
@@ -191,7 +221,7 @@ int main()
     string Money;
     getline(cin, Money);
 
-    
+
 
     return 0;
 }
