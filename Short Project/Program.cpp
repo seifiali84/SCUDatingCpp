@@ -93,6 +93,87 @@ public:
     }
 };
 
+// Split Two Int by ','
+void SplitInt(string data, int &a, int &b)
+{
+    if (data != "")
+    {
+        string TempData = "";
+        for (char c : data)
+        {
+            if (c != ',')
+            {
+                TempData += c;
+            }
+            else
+            {
+                a = stoi(TempData);
+                TempData = "";
+            }
+        }
+        b = stoi(TempData);
+    }
+    else
+    {
+        a = 0;
+        b = 0;
+    }
+}
+
+// Split Two Float by ','
+void SplitFloat(string data, float &a, float &b)
+{
+    if (data != "")
+    {
+        string TempData = "";
+        for (char c : data)
+        {
+            if (c != ',')
+            {
+                TempData += c;
+            }
+            else
+            {
+                a = stof(TempData);
+                TempData = "";
+            }
+        }
+        b = stof(TempData);
+    }
+    else
+    {
+        a = 0;
+        b = 0;
+    }
+}
+
+// Split Two Double By ','
+void SplitDouble(string data, double &a, double &b)
+{
+    if (data != "")
+    {
+        string TempData = "";
+        for (char c : data)
+        {
+            if (c != ',')
+            {
+                TempData += c;
+            }
+            else
+            {
+                a = stod(TempData);
+                TempData = "";
+            }
+        }
+        b = stod(TempData);
+    }
+    else
+    {
+        a = 0;
+        b = 0;
+    }
+}
+
 // Print Filtered People
 void ShowFilterPeople(string Name, string Family, string Age, string Height, string Weight, string Gender, string EyeColor, string SkinColor, string Religion, string Location, string Vehicle, string Money)
 {
