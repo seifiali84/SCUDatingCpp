@@ -40,6 +40,67 @@ public:
         }
     }
 
+    // Filter All People
+    static vector<Person> Filter(string name, string family, int MinAge, int MaxAge, int MinHeight, int MaxHeight, float MinWeight, float MaxWeight, bool gender, string eyeColor, string skinColor, string religion, string location, string vehicle, double MinMoney, double MaxMoney)
+    {
+        vector<Person> FilteredPeople;
+
+        for (Person P : People)
+        {
+            // Filter Name
+            if (name != "" && P.Name != name)
+                continue;
+
+            // Filter Family
+            if (family != "" && P.Family != family)
+                continue;
+                
+            // Filter Age
+            if ((P.Age > MaxAge || P.Age < MinAge) && (MinAge != 0 && MaxAge != 0))
+                continue;
+
+            // Filter Height
+            if ((P.Height > MaxHeight || P.Height < MinHeight) && (MinHeight != 0 && MaxHeight != 0))
+                continue;
+
+            // Filter Weight
+            if ((P.Weight > MaxWeight || P.Weight < MinWeight) && (MinWeight != 0 && MaxWeight != 0))
+                continue;
+
+            // Filter Gender
+            if (P.Gender != gender)
+                continue;
+
+            // Filter Eye Color
+            if (eyeColor != "" && P.EyeColor != eyeColor)
+                continue;
+
+            // Filter Skin Color
+            if (skinColor != "" && P.SkinColor != skinColor)
+                continue;
+
+            // Filter Religion
+            if (religion != "" && P.Religion != religion)
+                continue;
+
+            // Filter Location
+            if (location != "" && P.Location != location)
+                continue;
+
+            // Filter Vehicle
+            if (vehicle != "" && P.Vehicle != vehicle)
+                continue;
+
+            // Filter Money
+            if ((P.Money > MaxMoney || P.Money < MinMoney) && (MinMoney != 0 && MaxMoney != 0))
+                continue;
+
+            FilteredPeople.push_back(P);
+        }
+
+        return FilteredPeople;
+    }
+
     // Normal Person Constructor for Method Overloading
     Person()
     {
