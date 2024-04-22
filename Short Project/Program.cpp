@@ -24,9 +24,6 @@ public:
     string Vehicle;
     double Money;
 
-    // DB
-    static vector<Person> People;
-
     // Print People
     static void PrintPeople(vector<Person> People)
     {
@@ -41,11 +38,11 @@ public:
     }
 
     // Filter All People
-    static vector<Person> Filter(string name, string family, int MinAge, int MaxAge, int MinHeight, int MaxHeight, float MinWeight, float MaxWeight, bool gender, string eyeColor, string skinColor, string religion, string location, string vehicle, double MinMoney, double MaxMoney)
+    static vector<Person> Filter(string name, string family, int MinAge, int MaxAge, int MinHeight, int MaxHeight, float MinWeight, float MaxWeight, bool gender, string eyeColor, string skinColor, string religion, string location, string vehicle, double MinMoney, double MaxMoney, vector<Person> PeopleDB)
     {
         vector<Person> FilteredPeople;
 
-        for (Person P : People)
+        for (Person P : PeopleDB)
         {
             // Filter Name
             if (name != "" && P.Name != name)
@@ -249,7 +246,7 @@ void SplitDouble(string data, double &a, double &b)
 }
 
 // Print Filtered People
-void ShowFilterPeople(string Name, string Family, string Age, string Height, string Weight, string Gender, string EyeColor, string SkinColor, string Religion, string Location, string Vehicle, string Money)
+void ShowFilterPeople(string Name, string Family, string Age, string Height, string Weight, string Gender, string EyeColor, string SkinColor, string Religion, string Location, string Vehicle, string Money , vector<Person> PeopleDB)
 {
     // Split Min Age and Max Age
     int MinAge;
@@ -274,7 +271,7 @@ void ShowFilterPeople(string Name, string Family, string Age, string Height, str
     SplitDouble(Money, MinMoney, MaxMoney);
 
     // Filter and Show People
-    vector<Person> People = Person::Filter(Name, Family, MinAge, MaxAge, MinHeight, MaxHeight, MinWeight, MaxWeight, (Gender == "1"), EyeColor, SkinColor, Religion, Location, Vehicle, MinMoney, MaxMoney);
+    vector<Person> People = Person::Filter(Name, Family, MinAge, MaxAge, MinHeight, MaxHeight, MinWeight, MaxWeight, (Gender == "1"), EyeColor, SkinColor, Religion, Location, Vehicle, MinMoney, MaxMoney , PeopleDB);
     Person::PrintPeople(People);
 }
 
@@ -310,8 +307,10 @@ int main()
     p2.Vehicle = "";
     p2.Money = 10000000;
 
-    Person::People.push_back(p1);
-    Person::People.push_back(p2);
+    vector<Person> PeopleDB;
+
+    PeopleDB.push_back(p1);
+    PeopleDB.push_back(p2);
 
     cout << "Enter Your Filters"
          << "\n";
@@ -368,13 +367,17 @@ int main()
 
     // Vehicle Filter
     cout << "Enter Vehicle : ";
-    string Vehice;
-    getline(cin, Vehice);
+    string Vehicle;
+    getline(cin, Vehicle);
 
     // Money Filter
     cout << "Enter Money Range (Ex : 100000,1000000): ";
     string Money;
     getline(cin, Money);
+
+    // Filter Person :
+    ShowFilterPeople(Name , Family , Age , Height , Weight , Gender , EyeColor , SkinColor , Religion , Location , Vehicle , Money , PeopleDB);
+
 
     return 0;
 }
