@@ -23,13 +23,26 @@ public:
     string Location;
     string Vehicle;
     double Money;
-    
+
     // DB
     static vector<Person> People;
 
-    // Normal Person Constructor for Method Overloading
-    Person(){
+    // Print People
+    static void PrintPeople(vector<Person> People)
+    {
+        // Print Headers
+        cout << "Name,Family,Age,Height,Weight,Gender,Eye Color,Skin Color,Religion,Location,Vehicle,Money"
+             << "\n";
 
+        for (Person P : People)
+        {
+            cout << P.Name << ',' << P.Family << ',' << P.Age << ',' << P.Height << ',' << P.Weight << ',' << P.Gender << ',' << P.EyeColor << ',' << P.SkinColor << ',' << P.Religion << ',' << P.Location << ',' << P.Vehicle << ',' << P.Money << '\n';
+        }
+    }
+
+    // Normal Person Constructor for Method Overloading
+    Person()
+    {
     }
     // Constructor to Create Object From User Input
     Person(string name, string family, string age, string height, string weight, string gender, string eyeColor, string skinColor, string religion, string location, string vehicle, string money)
@@ -242,7 +255,7 @@ int main()
     cout << "Enter Your Filters"
          << "\n";
 
-        // Name Filter
+    // Name Filter
     cout << "Enter Name : ";
     string Name;
     getline(cin, Name);
@@ -301,8 +314,6 @@ int main()
     cout << "Enter Money Range (Ex : 100000,1000000): ";
     string Money;
     getline(cin, Money);
-
-
 
     return 0;
 }
